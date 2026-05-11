@@ -1,0 +1,24 @@
+app:
+  slug: whoami
+
+deploy:
+  type: compose
+  context: .
+  file: compose.yml
+  service: web
+
+http:
+  port: 80
+  health_path: /
+
+storage:
+  volumes: []
+
+backups:
+  targets:
+    - volumes
+
+env:
+  required:
+    - WHOAMI_NAME
+  optional: []
